@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+
+    <display-name>spring-mvc</display-name>
+
+    <!-- ETAPE 1 RAJOUTER LISTENER -->
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+    <listener>
+        <listener-class>
+            org.springframework.web.context.request.RequestContextListener
+        </listener-class>
+    </listener>
+    
+     <!-- ETAPE 2 RAJOUTER LE DISPATCHERSERVLET MAPPING -->
+    
+<!--     CLASSE CHANGESELON JSF OU JSP -->
+    <servlet> 
+        <servlet-name>facesServlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>facesServlet</servlet-name>
+        <url-pattern>*.jsf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>facesServlet</servlet-name>
+        <url-pattern>*.xhtml</url-pattern>
+    </servlet-mapping>
+
+<!-- AVEC LA LISTE DE TOUS LES XMLs -->
+<context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            WEB-INF/springmvc-servlet.xml
+            WEB-INF/springmvc-data.xml
+<!--             WEB-INF/springmvc-security.xml -->
+        </param-value>
+    </context-param>
+
+<!-- EST JE CROIS USELESS -->
+
+    <!-- Change to "Production" when you are ready to deploy -->
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Development</param-value>
+    </context-param>
+
+    <!-- Welcome page -->
+    <welcome-file-list>
+        <welcome-file>home.jsf</welcome-file>
+    </welcome-file-list>
+
+    <!-- JSF Mapping -->
+  
+<!-- SECU-->
+<!-- <filter> -->
+<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
+<!-- 		<filter-class> -->
+<!-- 			org.springframework.web.filter.DelegatingFilterProxy -->
+<!-- 		</filter-class> -->
+<!-- 	</filter> -->
+
+<!-- 	<filter-mapping> -->
+<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
+<!--  				<url-pattern>*.xhtml</url-pattern>  -->
+<!--  								<url-pattern>*.jsf</url-pattern>  -->
+<!-- 				<url-pattern>/*</url-pattern>  -->
+		
+<!-- 	</filter-mapping> -->
+
+
+
+</web-app>
