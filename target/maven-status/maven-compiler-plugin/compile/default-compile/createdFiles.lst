@@ -1,3 +1,4 @@
+WebService\WebServiceRest.class
 integration\service\IPersonneService.class
 integration\domaine\Personne.class
 integration\dao\IPersonneDao.class
